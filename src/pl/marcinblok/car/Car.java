@@ -48,8 +48,8 @@ public class Car {
         this.maxSpeed = newMaxSpeed;
     }
 
-    public void setCurrentNumberOfPeople() {
-        this.currentNumberOfPeople++;
+    public void setCurrentNumberOfPeople(int newNumberOfPassengers) {
+        this.currentNumberOfPeople = newNumberOfPassengers;
     }
 
     public void setTankCapacity(int newTankCapacity) {
@@ -70,20 +70,20 @@ public class Car {
 
     // Instance Methods
 
-    public void getOut(){
+    public void getOut(int passangers){
         if(getCurrentNumberOfPeople() > 0){
-            this.currentNumberOfPeople--;
+            setCurrentNumberOfPeople(getCurrentNumberOfPeople() - passangers);
             System.out.println("One person got out of the car");
         }else{
             System.out.println("The car is empty");
         }
     }
 
-    public void getIn(){
+    public void getIn(int passangers){
         if(getCurrentNumberOfPeople() >= MAX_PEOPLE_CAPACITY){
             System.out.println("The car is full, there is no room for another passenger");
         }else {
-            setCurrentNumberOfPeople();
+            setCurrentNumberOfPeople(getCurrentNumberOfPeople() + passangers);
         }
     }
 
@@ -92,7 +92,7 @@ public class Car {
     }
 
     public int maxDistance() {
-        return (int)(this.tankCapacity /AVG_FUEL_CONSUMPTION * 100);
+        return (int)(getTankCapacity() /AVG_FUEL_CONSUMPTION * 100);
     }
 
     public void setCarParameters(String brand, char condition, int maxSpeed, int tankCapacity, double fuelConsumption, int currentFuelLevel) {
@@ -126,16 +126,11 @@ public class Car {
         familyCar.setCarParameters("BMW",'B', 210,40,7,12);
         familyCar.printInfo();
         System.out.println("Passangers get in");
-        familyCar.getIn();
-        familyCar.getIn();
-        familyCar.getIn();
+        familyCar.getIn(2);
         System.out.println("Current number of people in the car is: " + familyCar.getCurrentNumberOfPeople());
         System.out.println("Passanger get out");
-        familyCar.getOut();
+        familyCar.getOut(1);
         familyCar.printInfo();
-        myCar.getIn();
-        System.out.println("My car");
-        myCar.printInfo();
         myCar.wrecked();
         myCar.printInfo();
     }
