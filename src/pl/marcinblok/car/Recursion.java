@@ -70,7 +70,7 @@ public class Recursion {
 
     }
 
-    // Rekurancja z użyciem modulo
+    // Rekurancja z użyciem modulo dla obliczenia gcd (greatest common divisor) - NAJWIĘKSZY WSPÓLNY DZIELNIK.
     public static int find_gcd(int a, int b) {
         if (b != 0) {
             return find_gcd(b, a % b);
