@@ -1,5 +1,7 @@
 package pl.marcinblok.car;
 
+import java.util.Scanner;
+
 public class Recursion {
     /* f(f(f(a))) --- a = 20
        f(a) = 5 + a
@@ -65,11 +67,28 @@ public class Recursion {
             // 5 * 5 * 5 * 1
             return n * Exponentiation(n, p - 1); // nie zmieniam n bo jak w linii 52 wartość którą mnożę jest zawsze ta sama!
         }
+
+    }
+
+    // Rekurancja z użyciem modulo
+    public static int find_gcd(int a, int b) {
+        if (b != 0) {
+            return find_gcd(b, a % b);
+        } else {
+            return a;
+        }
     }
 
     public static void main(String[] args) {
         System.out.println("Recursive " + Summation(3));
         System.out.println("Factorial " + Factorial(3));
         System.out.println("Exponentiation " + Exponentiation(5, 3));
+
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt(); // 2
+        int b = sc.nextInt(); // 3
+
+        int gcd = find_gcd(a, b);
+        System.out.println(gcd);
     }
 }
